@@ -1,73 +1,73 @@
-HW3: Cosmos3-Super-Text2Image App
+HW3: Cosmos3-Super-Text2Image 應用程式
 
-Project Goal
+專案目標
 
-This project is an interactive web application that integrates NVIDIA's state-of-the-art Cosmos3-Super-Text2Image (64B) foundation model via the Hugging Face Inference API. Designed to provide a responsive and mobile-friendly AI generation experience, the app assists students in fulfilling the requirements for HW3.
+本專案為一個互動式網頁應用程式，透過 Hugging Face Inference API 整合 NVIDIA 最先進的 Cosmos3-Super-Text2Image (64B) 基礎模型。此應用程式旨在提供具備響應式及行動裝置友善的 AI 生成體驗，協助學生完成 HW3 的作業要求。
 
-Model
+模型
 
-Core Model: nvidia/Cosmos3-Super-Text2Image
+核心模型：nvidia/Cosmos3-Super-Text2Image
 
-Specialization: 64B parameter text-to-image specialization designed for high-fidelity physical scene simulation.
+特點：擁有 64B (640 億) 參數的文字轉圖片特化模型，專為高保真物理場景模擬所設計。
 
-Key Features
+主要功能
 
-Interactive Controls (Sidebar Steerability): Supports custom Image Style presets, Aspect Ratio options, Seed randomizers, and Negative Prompt exclusions.
+互動式控制（側邊欄調節）：支援自訂圖片風格預設、長寬比選項、隨機種子設定以及負面提示詞排除功能。
 
-Dual-Tier Security Credentials: Prioritizes st.secrets authentication for production and provides a secure, hidden password text input fallback on the sidebar for local runs.
+雙層安全憑證機制：在生產環境中優先使用 st.secrets 進行驗證，並在側邊欄提供安全的隱藏式密碼輸入框，作為本機執行的備用方案。
 
-Mock/Demo Fallback Mode: Specifically engineered for physical/mobile presentations. When Hugging Face server nodes are queuing or offline, the toggled Mock Mode delivers simulated high-quality visuals seamlessly to prevent demonstration deadlocks.
+模擬/展示備用模式：專為實體/行動裝置簡報所設計。當 Hugging Face 伺服器節點正在排隊或離線時，切換至「模擬模式」可無縫提供模擬的高畫質影像，避免展示時發生卡頓或中斷。
 
-How to Run Locally
+如何在本地端執行
 
-1. Clone the repository
+1. 複製 (Clone) 儲存庫
 
-git clone [https://github.com/yourname/hw3-cosmos-text2image.git](https://github.com/yourname/hw3-cosmos-text2image.git)
+git clone [https://github.com/gshan1209-cell/hw3-cosmos-text2image.git](https://github.com/gshan1209-cell/hw3-cosmos-text2image.git)
 cd hw3-cosmos-text2image
 
 
-2. Install dependencies
+2. 安裝依賴套件
 
 pip install -r requirements.txt
 
 
-3. Setup Secrets
+3. 設定金鑰 (Secrets)
 
-To avoid hardcoding your Hugging Face API keys:
+為避免將您的 Hugging Face API 金鑰硬編碼在程式中：
 
-Option A: Input your token directly into the sidebar password field when running the app.
+選項 A：在執行應用程式時，直接將您的 Token 輸入到側邊欄的密碼欄位中。
 
-Option B: Create a .streamlit/secrets.toml file locally and add your credentials:
+選項 B：在本地端建立一個 .streamlit/secrets.toml 檔案，並加入您的憑證：
 
 HF_TOKEN = "your_huggingface_read_token_here"
 
 
-4. Execute the application
+4. 執行應用程式
 
 streamlit run app.py
 
 
-Deployment to Streamlit Community Cloud
+部署至 Streamlit 雲端社群 (Streamlit Community Cloud)
 
-Push your completed repository code to GitHub (making sure .gitignore excludes your secrets).
+將完成的儲存庫程式碼推送到 GitHub (請確認 .gitignore 已經排除您的 secrets 檔案)。
 
-Go to Streamlit Share and log in with your GitHub account.
+前往 Streamlit Share 並使用您的 GitHub 帳號登入。
 
-Click "New App", choose your repository, branch, and set the entry file to app.py.
+點擊「New App」，選擇您的儲存庫、分支，並將進入點檔案設定為 app.py。
 
-Under "Advanced Settings", find the Secrets section and add your API credentials securely:
+在「Advanced Settings」(進階設定) 中，找到 Secrets 區塊並安全地加入您的 API 憑證：
 
 HF_TOKEN = "your_huggingface_read_token_here"
 
 
-Click "Deploy". Your live app will be ready within minutes!
+點擊「Deploy」(部署)。您的線上應用程式將在幾分鐘內準備就緒！
 
-Links
+相關連結
 
-GitHub Repository: https://github.com/yourname/hw3-cosmos-text2image
+GitHub 儲存庫：https://github.com/gshan1209-cell/hw3-cosmos-text2image
 
-Streamlit Live Demo: https://your-app-name.streamlit.app
+Streamlit 線上展示：https://your-app-name.streamlit.app
 
-Screenshots
+畫面截圖
 
-(Add screenshots of your home page and generation results here)
+(在此處加入您的首頁與生成結果的截圖)

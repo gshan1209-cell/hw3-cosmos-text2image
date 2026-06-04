@@ -139,15 +139,34 @@ with col_meta2:
 
 st.markdown("---")
 
+# 提示詞優化回調函數 (Callback)
+def magic_enhance(style):
+    base = st.session_state.prompt_input
+    if base.strip():
+        enhancements = {
+            "電影感 (Cinematic)": "cinematic lighting, dramatic shadows, 35mm lens, depth of field, blockbuster movie still, 8k resolution, photorealistic",
+            "動漫插畫 (Anime Art)": "studio ghibli, makoto shinkai style, vibrant colors, detailed anime background, cel shaded, masterpiece",
+            "未來科技 (Cyberpunk/Sci-Fi)": "cyberpunk city, neon lighting, highly detailed, futuristic, sci-fi concept art, unreal engine 5 render",
+            "極簡攝影 (Minimalist Photography)": "minimalist, clean lines, negative space, soft natural lighting, elegant, studio lighting, high resolution",
+            "寫實照片 (Photorealistic)": "hyperrealistic photograph, highly detailed, sharp focus, 8k uhd, dslr, professional photography"
+        }
+        extra = enhancements.get(style, "masterpiece, highly detailed, 8k resolution")
+        # 避免重複疊加相同的優化詞
+        if extra not in base:
+            st.session_state.prompt_input = f"{base}, {extra}"
+
 # 使用者輸入提示詞區塊
 prompt_input = st.text_area(
     "🔮 請輸入英文場景描述 (Prompt)",
     placeholder="例如: A majestic glowing dragon flying over Taipei 101 at sunset, highly detailed, cyberpunk anime aesthetic...",
-    height=120
+    height=120,
+    key="prompt_input"
 )
 
+st.button("✨ 魔法優化提示詞", on_click=magic_enhance, args=(style_preset,), help="根據側邊欄選擇的「視覺風格」，自動為您擴充專業的提示詞細節以提升生成品質！")
+
 # Cosmos 3 JSON-upsampled Prompt 輔助資訊
-st.caption("💡 *提示：Cosmos 3 對於結構化、細節描述的字句有著極佳的物理世界還原能力，建議添加光線與鏡頭描述。*")
+st.caption("💡 *提示：Cosmos 3 對於結構化、細節描述的字句有著極佳的物理世界還原能力，建議添加光線與鏡頭描述，或點擊上方「魔法優化提示詞」。*")
 
 # ==========================================
 # 4. API 呼叫與推論邏輯 (Inference Engine)
