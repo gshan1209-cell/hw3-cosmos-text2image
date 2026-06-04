@@ -70,4 +70,4 @@ Streamlit 線上展示：https://your-app-name.streamlit.app
 
 畫面截圖
 
-(在此處加入您的首頁與生成結果的截圖)
+![alt text](image.png)
