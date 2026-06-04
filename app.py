@@ -134,7 +134,7 @@ with col_meta1:
     st.markdown("💻 **本地執行**: `streamlit run app.py`")
 with col_meta2:
     # 學生部署後需至 GitHub 與 Streamlit Secrets 填寫此處
-    st.markdown("🔗 **GitHub 專案**: [點此訪問 Repository](https://github.com/yourname/hw3-cosmos-text2image)")
+    st.markdown("🔗 **GitHub 專案**: [點此訪問 Repository](https://github.com/gshan1209-cell/hw3-cosmos-text2image)")
     st.markdown("🚀 **雲端網址**: [點此訪問 Live Demo](https://your-app-name.streamlit.app)")
 
 st.markdown("---")
@@ -244,6 +244,8 @@ if st.button("🎨 啟動 Cosmos 3 晶片生成圖像"):
                         
                 except requests.exceptions.Timeout:
                     st.error("⏳ API 請求超時：Hugging Face 伺服器響應時間過長，請稍後再試，或使用「示範模式」展示。")
+                except requests.exceptions.ConnectionError:
+                    st.error("🔌 網路連線失敗：無法解析 Hugging Face 伺服器位址。請檢查您的網路連線、DNS 設定，或確認是否有防火牆/VPN 阻擋。作為替代方案，您可以開啟側邊欄的「示範模式」來進行展示。")
                 except Exception as e:
                     st.error(f"❌ 發生系統錯誤: {str(e)}")
 
